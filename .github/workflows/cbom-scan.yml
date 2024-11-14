@@ -11,5 +11,3 @@ jobs:
       - name: cbom scan
         id: scan
         uses: n1ckl0sk0rtge/cbom-scan-action@v0.0.9
-      - name: Get CBOM
-        run: echo "CBOM: ${{ steps.scan.outputs.cbom }}"
