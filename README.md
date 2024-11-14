@@ -11,6 +11,7 @@
 - [Overview](#overview)
   * [Compatibility](#compatibility)
   * [References](#references)
+  * [Versioning and Deprecation Policy](#versioning)
 - [Usage](#usage)
   * [Prerequisites](#prerequisites)
   * [Adding the Library to Your Project](#adding-the-library-to-your-project)
@@ -27,11 +28,14 @@
 Library for Mastercard API compliant payload encryption/decryption.
 
 ### Compatibility <a name="compatibility"></a>
-Java 8+
+Java 11+
 
 ### References <a name="references"></a>
 * [JSON Web Encryption (JWE)](https://datatracker.ietf.org/doc/html/rfc7516)
 * [Securing Sensitive Data Using Payload Encryption](https://developer.mastercard.com/platform/documentation/security-and-authentication/securing-sensitive-data-using-payload-encryption/)
+
+### Versioning and Deprecation Policy <a name="versioning"></a>
+* [Mastercard Versioning and Deprecation Policy](https://github.com/Mastercard/.github/blob/main/CLIENT_LIBRARY_DEPRECATION_POLICY.md)
 
 ## Usage <a name="usage"></a>
 ### Prerequisites <a name="prerequisites"></a>
@@ -66,7 +70,7 @@ See: https://search.maven.org/artifact/com.mastercard.developer/client-encryptio
 
 This library requires one of the following dependencies to be added to your classpath:
 
-* [Jackson](https://search.maven.org/artifact/com.fasterxml.jackson.core/jackson-databind) 2.4.5+
+* [Jackson](https://search.maven.org/artifact/com.fasterxml.jackson.core/jackson-databind) 2.5.0+
 * [Google Gson](https://search.maven.org/artifact/com.google.code.gson/gson) 2.3.1+
 * [Json-smart](https://search.maven.org/artifact/net.minidev/json-smart) 2.1.1+
 * [Jettison](https://search.maven.org/artifact/org.codehaus.jettison/jettison) 1.0+
@@ -165,11 +169,9 @@ JweConfig config = JweConfigBuilder.aJweEncryptionConfig()
     .withEncryptionPath("$.path.to.foo", "$.path.to.encryptedFoo")
     .withDecryptionPath("$.path.to.encryptedFoo.encryptedValue", "$.path.to.foo")
     .withEncryptedValueFieldName("encryptedValue")
+    .withIVSize(16) // available values are 12 or 16. If not specified, default value is 16.
     .build();
 ```
-
-See also:
-* [Service Configurations for Client Encryption Java](https://github.com/Mastercard/client-encryption-java/wiki/Service-Configurations-for-Client-Encryption-Java)
 
 ##### • Performing JWE Encryption <a name="performing-jwe-encryption"></a>
 
@@ -404,7 +406,6 @@ FieldLevelEncryptionConfig config = FieldLevelEncryptionConfigBuilder.aFieldLeve
 
 See also:
 * [FieldLevelEncryptionConfig.java](https://www.javadoc.io/page/com.mastercard.developer/client-encryption/latest/com/mastercard/developer/encryption/FieldLevelEncryptionConfig.html) for all config options
-* [Service Configurations for Client Encryption Java](https://github.com/Mastercard/client-encryption-java/wiki/Service-Configurations-for-Client-Encryption-Java)
 
 ##### • Performing Mastercard Encryption <a name="performing-mastercard-encryption"></a>
 
@@ -628,7 +629,6 @@ FieldLevelEncryptionConfig config = FieldLevelEncryptionConfigBuilder.aFieldLeve
 
 See also:
 * [FieldLevelEncryptionConfig.java](https://www.javadoc.io/page/com.mastercard.developer/client-encryption/latest/com/mastercard/developer/encryption/FieldLevelEncryptionConfig.html) for all config options
-* [Service Configurations for Client Encryption Java](https://github.com/Mastercard/client-encryption-java/wiki/Service-Configurations-for-Client-Encryption-Java)
 
 ###### Encrypting Using HTTP Headers
 
