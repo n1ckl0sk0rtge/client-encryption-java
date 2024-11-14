@@ -9,5 +9,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: cbom scan
-        id: hello
+        id: scan
         uses: n1ckl0sk0rtge/cbom-scan-action@v0.0.9
+      - name: Get CBOM
+        run: echo "CBOM: ${{ steps.scan.outputs.cbom }}"
