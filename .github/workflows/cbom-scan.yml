@@ -8,4 +8,4 @@ jobs:
     steps:
       - name: cbom scan
         id: hello
-        uses: n1ckl0sk0rtge/cbom-scan-action@v0.0.6
+        uses: n1ckl0sk0rtge/cbom-scan-action@v0.0.7
