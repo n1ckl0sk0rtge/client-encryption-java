@@ -1,0 +1,10 @@
+on: [push]
+
+jobs:
+  cbom-scan:
+    runs-on: ubuntu-latest
+    name: CBOM generation
+    steps:
+      - name: cbom scan
+        id: hello
+        uses: n1ckl0sk0rtge/cbom-scan-action@v0.0.1
