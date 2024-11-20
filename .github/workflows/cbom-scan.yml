@@ -3,7 +3,7 @@ on:
 
 jobs:
   cbom-scan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     name: CBOM generation
     steps:
       - name: Checkout repository
