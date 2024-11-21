@@ -20,6 +20,7 @@ jobs:
            git switch -c security/update-cbom
            git add .
            git commit -m "Update CBOM"
+           git push origin security/update-cbom
       - name: create pull request
         run: gh pr create --base main --head security/update-cbom --title 'Update CBOM' --body 'CBOM created by GitHub Action'
         env:
