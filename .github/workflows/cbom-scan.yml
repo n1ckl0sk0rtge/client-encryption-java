@@ -5,9 +5,15 @@ jobs:
   cbom-scan:
     runs-on: ubuntu-20.04
     name: CBOM generation
+    permissions:
+      pull-requests: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: cbom scan
         id: scan
         uses: n1ckl0sk0rtge/cbom-scan-action@v0.0.16
+      - name: create pull request
+        run: gh pr create --base main --head ${{ github.ref_name }} --title 'CBOM' --body 'CBOM created by GitHub Action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
