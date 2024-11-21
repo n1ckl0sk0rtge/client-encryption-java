@@ -12,19 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Create CBOM
-        id: scan
         uses: n1ckl0sk0rtge/cbom-scan-action@v0.0.16
+        id: create-cbom
       - name: Commit changes to new branch
-        run: |
-           git config user.name github-actions
-           git config user.email github-actions@github.com
-           git switch -c security/update-cbom
-           git add .
-           git commit -m "Update CBOM"
-           git push origin security/update-cbom
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: create pull request
-        run: gh pr create --base main --head security/update-cbom --title 'Update CBOM' --body 'CBOM created by GitHub Action'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/upload-artifact@v4
+        with: 
+          path: ${{steps.create-cbom.outputs.filename }}
+          name: "CBOM"
+        
