@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Create CBOM
         uses: n1ckl0sk0rtge/cbom-scan-action@v0.0.17
-        id: create-cbom
+        id: cbom
       - name: Commit changes to new branch
         uses: actions/upload-artifact@v4
         with: 
-          path: ${{ steps.create-cbom.outputs.filename }}
           name: "CBOM"
+          path: ${{ steps.cbom.outputs.filename }}
         
