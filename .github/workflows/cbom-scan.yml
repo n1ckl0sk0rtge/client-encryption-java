@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Create CBOM
-        uses: PQCA/CBOMkit-action@v0.0.2
+        uses: PQCA/CBOMkit-action@v0.0.3
         id: cbom
       - name: Commit changes to new branch
         uses: actions/upload-artifact@v4
